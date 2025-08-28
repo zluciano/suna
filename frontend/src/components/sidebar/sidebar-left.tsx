@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { Bot, Menu, Store, Plus, Zap, ChevronRight, Loader2 } from 'lucide-react';
+import { Bot, Menu, Store, Plus, Zap, ChevronRight, Loader2, Table } from 'lucide-react';
 
 import { NavAgents } from '@/components/sidebar/nav-agents';
 import { NavUserWithTeams } from '@/components/sidebar/nav-user-with-teams';
@@ -183,6 +183,22 @@ export function SidebarLeft({
               <Plus className="h-4 w-4 mr-1" />
               <span className="flex items-center justify-between w-full">
                 New Task
+              </span>
+            </SidebarMenuButton>
+          </Link>
+          <Link href="/spreadsheet">
+            <SidebarMenuButton 
+              className={cn('touch-manipulation', {
+                'bg-accent text-accent-foreground font-medium': pathname === '/spreadsheet',
+              })} 
+              onClick={() => {
+                posthog.capture('spreadsheet_clicked');
+                if (isMobile) setOpenMobile(false);
+              }}
+            >
+              <Table className="h-4 w-4 mr-1" />
+              <span className="flex items-center justify-between w-full">
+                AI Spreadsheet
               </span>
             </SidebarMenuButton>
           </Link>

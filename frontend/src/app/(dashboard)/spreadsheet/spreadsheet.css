@@ -1,0 +1,193 @@
+/* Spreadsheet Container Styles */
+.spreadsheet-container {
+  width: 100%;
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid hsl(var(--border));
+}
+
+/* React Spreadsheet Base Styles */
+.Spreadsheet {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.Spreadsheet__table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.Spreadsheet__header {
+  background: hsl(var(--muted));
+  border-bottom: 1px solid hsl(var(--border));
+  font-weight: 600;
+  color: hsl(var(--muted-foreground));
+}
+
+.Spreadsheet__cell {
+  border: 1px solid hsl(var(--border));
+  padding: 8px 12px;
+  position: relative;
+  background: hsl(var(--background));
+  transition: all 0.15s ease;
+}
+
+.Spreadsheet__cell:hover {
+  background: hsl(var(--muted) / 0.5);
+}
+
+.Spreadsheet__cell--selected {
+  background: hsl(var(--primary) / 0.1) !important;
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: inset 0 0 0 1px hsl(var(--primary));
+}
+
+.Spreadsheet__cell--active {
+  background: hsl(var(--primary) / 0.15) !important;
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: inset 0 0 0 2px hsl(var(--primary));
+}
+
+.Spreadsheet__input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+}
+
+/* Pending Cell Styles */
+.Spreadsheet__cell--pending {
+  background: hsl(var(--warning) / 0.1) !important;
+  position: relative;
+}
+
+.Spreadsheet__cell--pending::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--warning));
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+/* Success Flash Animation */
+.Spreadsheet__cell--success-flash {
+  background: hsl(var(--success) / 0.2) !important;
+  animation: successFlash 1s ease-out;
+}
+
+@keyframes successFlash {
+  0% {
+    background: hsl(var(--success) / 0.4);
+  }
+  100% {
+    background: hsl(var(--success) / 0.1);
+  }
+}
+
+/* Error Flash Animation */
+.Spreadsheet__cell--error-flash {
+  background: hsl(var(--destructive) / 0.2) !important;
+  animation: errorFlash 1s ease-out;
+}
+
+@keyframes errorFlash {
+  0% {
+    background: hsl(var(--destructive) / 0.4);
+  }
+  100% {
+    background: hsl(var(--destructive) / 0.1);
+  }
+}
+
+/* Pulse Animation for Pending Cells */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Column and Row Headers */
+.Spreadsheet__header-cell {
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  font-weight: 600;
+  text-align: center;
+  border: 1px solid hsl(var(--border));
+  padding: 8px 12px;
+  min-width: 40px;
+}
+
+/* Selection Styles */
+.Spreadsheet__selection {
+  border: 2px solid hsl(var(--primary));
+  background: hsl(var(--primary) / 0.1);
+  pointer-events: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .Spreadsheet__cell {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  
+  .spreadsheet-container {
+    font-size: 13px;
+  }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .Spreadsheet__cell {
+    border-color: hsl(var(--border));
+  }
+  
+  .Spreadsheet__header {
+    background: hsl(var(--muted));
+  }
+}
+
+/* Loading State */
+.spreadsheet-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Custom Scrollbar */
+.spreadsheet-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.spreadsheet-container::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+.spreadsheet-container::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+.spreadsheet-container::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+

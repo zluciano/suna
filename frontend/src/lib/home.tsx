@@ -78,6 +78,7 @@ export const siteConfig = {
       { id: 4, name: 'Open Source', href: '#open-source' },
       { id: 5, name: 'Pricing', href: '#pricing' },
       { id: 6, name: 'Enterprise', href: '/enterprise' },
+      { id: 7, name: 'AI Spreadsheet', href: '/spreadsheet' },
     ],
   },
   hero: {
